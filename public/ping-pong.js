@@ -278,8 +278,8 @@
       // make particles fall
       for (var i=0; i < len; i++) {
         particle = state.particles.vertices[i];
-        particle.z -= delta * 50 + ( i / len * 3 );
-        if (particle.z < 0) particle.z = Math.random() * HEIGHT;
+        particle.z += delta * 50 + ( i / len * 3 );
+        if (particle.z > HEIGHT) particle.z = Math.random() * HEIGHT / 3;
       }
     }
 

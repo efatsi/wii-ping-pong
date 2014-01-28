@@ -1,6 +1,6 @@
 'use strict';
 
-const
+var
   express = require('express'),
   app = express(),
   server = require('http').createServer(app),
@@ -17,12 +17,12 @@ app.use(express.static(__dirname + '/public'));
 
 // === WIIMOTE SUBSCRIBER
 function buildSubscriber(address) {
-  let subscriber = zmq.socket('sub');
+  var subscriber = zmq.socket('sub');
 
   subscriber.subscribe('');
 
   subscriber.on('message', function(data) {
-    let 
+    var
       msg = JSON.parse(data.toString()),
       controllerPointer = controller['player'+msg.nunchuck];
 
@@ -68,7 +68,7 @@ io.sockets.on('connection', function(socket) {
 //buildSubscriber('tcp://192.168.109.137:9001');
 
 // demo /test
-let direction = -1,
+var direction = -1,
     speed = 1;
 setInterval(function() {
   for (var player in controller) {
